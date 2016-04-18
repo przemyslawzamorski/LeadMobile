@@ -34,9 +34,11 @@ function log_in() {
     if (window.password == "" && window.username == "") {
         window.username = ".";
     }
+
+    var nohttps_url= window.serwer.replece("https://","");
     $(function () {
 
-        var url = "https://" + window.username + ":" + window.password + "@system.fastdata.com.pl:4567/rin/leady?";
+        var url = "https://" + window.username + ":" + window.password + "@"+nohttps_url+"/rin/leady?";
 
         $.ajax(url,
             {
