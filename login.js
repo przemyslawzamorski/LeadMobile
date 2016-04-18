@@ -3,7 +3,7 @@ function check_server() {
     if (window.serwer) {
         $("#login_form").css("display", "block");
         $("#serwer_form").css("display", "none");
-        $("#serwer_name").append( window.serwer );
+        $("#serwer_name").append(window.serwer);
     } else {
         $("#serwer_form").css("display", "block");
         $("#login_form").css("display", "none");
@@ -15,13 +15,13 @@ function add_serwer() {
     var server_name = serwer_data[0].value;
     localStorage.setItem("server", server_name);
     check_server();
+    $("#load_assign_gif").css("display", "none");
 }
 
 function serwer_reset() {
     localStorage.removeItem('server');
-    $("#serwer_input").val('');
     $("#serwer_name").empty();
-
+    $("#load_assign_gif").css("display", "none");
     check_server();
 }
 
@@ -32,13 +32,15 @@ function log_in() {
     window.username = login_data[0].value.toUpperCase();
     window.password = login_data[1].value;
     if (window.password == "" && window.username == "") {
-        window.username = ".";
-    }
+        window.username = "a";
+        window.password = "a";
 
-    var nohttps_url= window.serwer.replece("https://","");
+    }
+    var nohttps_url = window.serwer;
+    nohttps_url = nohttps_url.replace("https://", "");
     $(function () {
 
-        var url = "https://" + window.username + ":" + window.password + "@"+nohttps_url+"/rin/leady?";
+        var url = "https://" + window.username + ":" + window.password + "@" + nohttps_url + "/rin/leady?";
 
         $.ajax(url,
             {
@@ -54,6 +56,15 @@ function log_in() {
 
                     },
                     200: function () {
+                        console.log("autoryzowano");
+                        $("#login_error").css("display", "none");
+                        $("#leeds-content").load('auth_app.html');
+                        $("#leeds-content").css("display", "block");
+                        $("#login").css('display', "none");
+
+
+                    },
+                    404: function () {
                         console.log("autoryzowano");
                         $("#login_error").css("display", "none");
                         $("#leeds-content").load('auth_app.html');

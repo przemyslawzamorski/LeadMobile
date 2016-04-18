@@ -4,7 +4,8 @@ window.lead_contact = [];
 
 /*logout*/
 function log_out() {
-    var nohttps_url= window.serwer.replece("https://","");
+    var nohttps_url = window.serwer;
+    nohttps_url= nohttps_url.replace("https://","");
     $.ajax("https://a:a@"+nohttps_url+"/apps/leadinfo/auth_leeds_styles.css",
         {
             /*wylogowuwyje i czyszczcze dane*/
