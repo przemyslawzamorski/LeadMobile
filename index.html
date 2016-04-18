@@ -42,7 +42,7 @@
         <p style="font-size: 24px; text-align: center; color: #737373;">- Logowanie -</p>
 
         <div style="text-align: center;">
-            <form id="login_form" style="text-align: center;" action="javascript:log_in();">
+            <form id="login_form" style="text-align: center;" action="javascript:log_in(); display: none;">
                 <input type="text" id="username" name="username" placeholder="Uzytkownik"
                        style="width: 250px !important; padding: 4px 10px 4px 10px; border: none; margin-bottom: 20px; text-transform:uppercase">
                 </br>
@@ -50,12 +50,11 @@
                        style="width: 250px !important; padding: 4px 10px 4px 10px; border: none; margin-bottom: 20px;">
                 </br>
                 <input type="submit" class="btn btn-danger" value="Zaloguj sie">
+                <p id="serwer_name"></p>
             </form>
 
-        </div>
-        
-        <div style="text-align: center; display-model: none;">
-            <form id="serwer_form" style="text-align: center;" action="javascript:log_in();">
+
+            <form id="serwer_form" style="text-align: center;" action="javascript:add_serwer(); display: none;">
                 <input type="text" id="serwer" name="serwer" placeholder="Dane serwera"
                        style="width: 250px !important; padding: 4px 10px 4px 10px; border: none; margin-bottom: 20px;">
                 </br>
@@ -67,7 +66,6 @@
         <div id="login_error" class="alert alert-danger" style="display: none; margin-top: 20px;">
             Wprowadzono bledna nazwe uzytkownika lub haslo. Wprowadz poprawne dane!
         </div>
-        <button onclick="local()">habababa </button>
         <div id ="test">
 
         </div>
@@ -82,8 +80,9 @@
 </body>
 
 <script language="javascript">
-    <!--login js-->
+
     $(document).ready(function () {
+        check_server();
     });
 </script>
 </html>

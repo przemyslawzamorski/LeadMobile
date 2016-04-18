@@ -1,13 +1,18 @@
-
-function check_server(){
-    var serwer =localStorage.getItem("server");
-    if (serwer){
-
-
-    }else{
-
-     localStorage.setItem("server", nazwa_serwera);
+function check_server() {
+    var serwer = localStorage.getItem("server");
+    if (serwer) {
+        $("#login_form").css("display", "block");
+        $("#serwer_name").append(serwer);
+    } else {
+        $("#serwer_form").css("display", "block");
     }
+}
+
+function add_serwer() {
+    window.serwer_data = $("#serwer_form").serializeArray();
+    var server_name = serwer_data[0].value;
+    localStorage.setItem("server", server_name);
+    check_server();
 }
 
 
@@ -15,13 +20,13 @@ function log_in() {
 
     window.login_data = $("#login_form").serializeArray();
     window.username = login_data[0].value.toUpperCase();
-	window.password = login_data[1].value;
+    window.password = login_data[1].value;
     if (window.password == "" && window.username == "") {
         window.username = ".";
     }
     $(function () {
 
-        var url = "https://" +  window.username + ":" + window.password + "@system.fastdata.com.pl:4567/rin/leady?";
+        var url = "https://" + window.username + ":" + window.password + "@system.fastdata.com.pl:4567/rin/leady?";
 
         $.ajax(url,
             {
