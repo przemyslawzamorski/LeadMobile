@@ -217,7 +217,7 @@ function get_lead_info(this_id) {
                 window.lead_contact_info = lead_contact_info[0];
                 append_contact_info(window.lead_contact_info);
             } else {
-                var contact_info_link = "https://system.fastdata.com.pl:4567/rin/lead_con/" + object.LEADID;
+                var contact_info_link =window.serwer+"/rin/lead_con/" + object.LEADID;
                 $.getJSON(contact_info_link, function (data) {
                     window.lead_contact_info = data;
                     window.lead_contact.push(data);

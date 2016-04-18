@@ -5,7 +5,7 @@ function get_date_type(asyncvalue, type, succesfunction, errorfunction) {
     $.ajax({
         type: 'GET',
         async: asyncvalue,
-        url: "https://system.fastdata.com.pl:4567/rin/" + type,
+        url: window.serwer+"/rin/" + type,
         processData: true,
         data: {},
         crossDomain: true,
@@ -24,7 +24,7 @@ function execute_given_operation(operation, operation_data, succes_function, err
     $.ajax({
         async: true,
         crossDomain: true,
-        url: "https://system.fastdata.com.pl:4567/ope/" + operation,
+        url: window.serwer+"/ope/" + operation,
         method: "POST",
         dataType: 'json',
         data: operation_data,

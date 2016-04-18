@@ -1,9 +1,9 @@
 function check_server() {
-    var serwer = localStorage.getItem("server");
-    if (serwer) {
+    window.serwer = localStorage.getItem("server");
+    if (window.serwer) {
         $("#login_form").css("display", "block");
         $("#serwer_form").css("display", "none");
-        $("#serwer_name").append( serwer );
+        $("#serwer_name").append( window.serwer );
     } else {
         $("#serwer_form").css("display", "block");
         $("#login_form").css("display", "none");
