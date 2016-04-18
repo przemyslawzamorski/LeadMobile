@@ -63,16 +63,15 @@ function log_in() {
                         $("#login").css('display', "none");
 
 
-                    },
-                    404: function () {
-                        console.log("autoryzowano");
-                        $("#login_error").css("display", "none");
-                        $("#leeds-content").load('auth_app.html');
-                        $("#leeds-content").css("display", "block");
-                        $("#login").css('display', "none");
-
-
                     }
+                },
+                error: function () {
+                    console.log("nie autoryzowano");
+                        $("#login_error").css("display", "block");
+                        $("#password").val('');
+                        $("#username").val('');
+                        $("#contact_info_load").remove();
+
                 }
             });
     });
