@@ -49,16 +49,20 @@
                 <input type="password" id="password" name="password" placeholder="Haslo"
                        style="width: 250px !important; padding: 4px 10px 4px 10px; border: none; margin-bottom: 20px;">
                 </br>
-                <input type="submit" class="btn btn-danger" value="Zaloguj sie">
+                <p>Aktualny serwer :</p>
                 <p id="serwer_name"></p>
+
+                <input type="submit" class="btn btn-danger" value="Zaloguj sie">
+                <button type="button" class="btn btn-danger" value="Zmien serwer" onclick="serwer_reset();">Zmien serwer</button>
             </form>
 
 
             <form id="serwer_form" style="text-align: center;" action="javascript:add_serwer(); display: none;">
-                <input type="text" id="serwer" name="serwer" placeholder="Dane serwera"
+                <input type="text" id="serwer_input" name="serwer" placeholder="Dane serwera"
                        style="width: 250px !important; padding: 4px 10px 4px 10px; border: none; margin-bottom: 20px;">
                 </br>
                 <input type="submit" class="btn btn-danger" value="Zatwierdź dane serwera">
+
             </form>
         </div>
 
@@ -66,9 +70,7 @@
         <div id="login_error" class="alert alert-danger" style="display: none; margin-top: 20px;">
             Wprowadzono bledna nazwe uzytkownika lub haslo. Wprowadz poprawne dane!
         </div>
-        <div id ="test">
 
-        </div>
 
         <!--login div-->
     </div>

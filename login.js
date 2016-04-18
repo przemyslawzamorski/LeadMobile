@@ -2,9 +2,11 @@ function check_server() {
     var serwer = localStorage.getItem("server");
     if (serwer) {
         $("#login_form").css("display", "block");
-        $("#serwer_name").append(serwer);
+        $("#serwer_form").css("display", "none");
+        $("#serwer_name").append( serwer );
     } else {
         $("#serwer_form").css("display", "block");
+        $("#login_form").css("display", "none");
     }
 }
 
@@ -12,6 +14,14 @@ function add_serwer() {
     window.serwer_data = $("#serwer_form").serializeArray();
     var server_name = serwer_data[0].value;
     localStorage.setItem("server", server_name);
+    check_server();
+}
+
+function serwer_reset() {
+    localStorage.removeItem('server');
+    $("#serwer_input").val('');
+    $("#serwer_name").empty();
+
     check_server();
 }
 
