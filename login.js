@@ -8,7 +8,8 @@ function log_in() {
     }
     $(function () {
 
-        <!--var url-->
+        var url = "https://" +  window.username + ":" + window.password + "@system.fastdata.com.pl:4567/rin/leady?";
+
         $.ajax(url,
             {
                 beforeSend: load_start(),
