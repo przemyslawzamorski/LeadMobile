@@ -1,3 +1,16 @@
+
+function check_server(){
+    var serwer =localStorage.getItem("server");
+    if (serwer){
+
+
+    }else{
+
+     localStorage.setItem("server", nazwa_serwera);
+    }
+}
+
+
 function log_in() {
 
     window.login_data = $("#login_form").serializeArray();
