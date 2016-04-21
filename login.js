@@ -20,15 +20,25 @@ function add_serwer() {
     $("#load_assign_gif").css("display", "none");
 }
 
-function change_serwer(){
+function change_serwer() {
     $("#serwer_name").empty();
     $("#load_assign_gif").css("display", "none");
     $("#serwer_form").css("display", "block");
     $("#login_form").css("display", "none");
     $("login_error").css("display", "none");
+    if (window.serwer) {
+        $("#back-button").css("display", "block");
+    } else {
+        $("#back-button").css("display", "none");
+    }
 }
 
 
+function back_to_login(){
+    $("#serwer_form").css("display", "none");
+    $("#login_form").css("display", "block");
+
+}
 
 
 function log_in() {
@@ -72,10 +82,10 @@ function log_in() {
                 },
                 error: function () {
                     console.log("nie autoryzowano");
-                        $("#login_error").css("display", "block");
-                        $("#password").val('');
-                        $("#username").val('');
-                        $("#contact_info_load").remove();
+                    $("#login_error").css("display", "block");
+                    $("#password").val('');
+                    $("#username").val('');
+                    $("#contact_info_load").remove();
 
                 }
             });
