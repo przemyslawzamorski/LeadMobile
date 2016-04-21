@@ -21,13 +21,12 @@ function add_serwer() {
 }
 
 function change_serwer() {
-    $("#serwer_name").empty();
     $("#load_assign_gif").css("display", "none");
     $("#serwer_form").css("display", "block");
     $("#login_form").css("display", "none");
-    $("login_error").css("display", "none");
+    $("#login_error").css("display", "none");
     if (window.serwer) {
-        $("#back-button").css("display", "block");
+        $("#back-button").css("display", "inline-block");
     } else {
         $("#back-button").css("display", "none");
     }
