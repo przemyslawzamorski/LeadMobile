@@ -1,6 +1,7 @@
 function check_server() {
     window.serwer = localStorage.getItem("server");
     if (window.serwer) {
+        $("#serwer_name").empty();
         $("#login_form").css("display", "block");
         $("#serwer_form").css("display", "none");
         $("#serwer_name").append(window.serwer);
@@ -11,6 +12,7 @@ function check_server() {
 }
 
 function add_serwer() {
+    localStorage.removeItem('server');
     window.serwer_data = $("#serwer_form").serializeArray();
     var server_name = serwer_data[0].value;
     localStorage.setItem("server", server_name);
@@ -18,12 +20,15 @@ function add_serwer() {
     $("#load_assign_gif").css("display", "none");
 }
 
-function serwer_reset() {
-    localStorage.removeItem('server');
+function change_serwer(){
     $("#serwer_name").empty();
     $("#load_assign_gif").css("display", "none");
-    check_server();
+    $("#serwer_form").css("display", "block");
+    $("#login_form").css("display", "none");
+    $("login_error").css("display", "none");
 }
+
+
 
 
 function log_in() {
