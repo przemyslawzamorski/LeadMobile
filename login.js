@@ -50,11 +50,20 @@ function log_in() {
         window.password = "a";
 
     }
-    var nohttps_url = window.serwer;
-    nohttps_url = nohttps_url.replace("https://", "");
+
+    var serwer_url = window.serwer;
+    var index = serwer_url.indexOf("/");
+    index = index +1;
+    window.header = serwer_url.substr(0, index);
+    window.rest_url = serwer_url.substr(index+1);
+    console.log(header);
+    console.log(rest_url);
+
+
+
     $(function () {
 
-        var url = "https://" + window.username + ":" + window.password + "@" + nohttps_url + "/rin/leady?";
+        var url = header + window.username + ":" + window.password + "@" + rest_url + "/rin/leady?";
 
         $.ajax(url,
             {
