@@ -111,9 +111,7 @@ button {
     background: radial-gradient(white, #ababab); /* Standard syntax (must be last) */
 }
 
-tr:hover {
-    background-color: #CCFF99 !important;
-}
+
 
 .active-line {
     background-color: #CCFF99 !important;

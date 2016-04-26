@@ -351,7 +351,6 @@ function load_and_render_page_data() {
 /*funkcja przeladowywujaca sama tabele leadow*/
 function reload_table_leads(operation) {
     $("#refresh-button").addClass("glyphicon-refresh-animate");
-    /*console.log("reload");*/
 
     /*pobieram dane leady i wyswietla na ekranie*/
     get_date_type(false, operation, function (data) {
