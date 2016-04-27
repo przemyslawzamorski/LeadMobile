@@ -5,8 +5,8 @@ window.lead_contact = [];
 /*logout*/
 function log_out() {
     var nohttps_url = window.serwer;
-    nohttps_url= nohttps_url.replace("https://","");
-    $.ajax(window.header+"a:a@"+ window.rest_url+"/apps/leadinfo/auth_leeds_styles.css",
+    nohttps_url = nohttps_url.replace("https://", "");
+    $.ajax(window.header + "a:a@" + window.rest_url + "/apps/leadinfo/auth_leeds_styles.css",
         {
             /*wylogowuwyje i czyszczcze dane*/
             statusCode: {
@@ -16,7 +16,7 @@ function log_out() {
                     $("#login").collapse('show');
                     $("#login").css("display", "block");
                     $("#leeds-content").css("display", "none");
-                   /* location.reload();*/
+                    /* location.reload();*/
                 }
             }
         });
@@ -119,7 +119,7 @@ function render_date(object_data, date, status) {
     if (time_difference_number(date) >= 0) {
         $("#" + object_data.LEADID).append("<td class='main-information-column'>" + time + "</td>");
     } else {
-        $("#" + object_data.LEADID).append("<td class='warning no-side-padding main-information-column' >" + time.replace("-","") + " przekroczono</td>");
+        $("#" + object_data.LEADID).append("<td class='warning no-side-padding main-information-column' >" + time.replace("-", "") + " przekroczono</td>");
     }
 }
 
@@ -219,7 +219,7 @@ function get_lead_info(this_id) {
                 window.lead_contact_info = lead_contact_info[0];
                 append_contact_info(window.lead_contact_info);
             } else {
-                var contact_info_link =window.serwer+"/rin/lead_con/" + object.LEADID;
+                var contact_info_link = window.serwer + "/rin/lead_con/" + object.LEADID;
                 $.getJSON(contact_info_link, function (data) {
                     window.lead_contact_info = data;
                     window.lead_contact.push(data);
@@ -314,12 +314,23 @@ function mod() {
     $('#callTemplate').modal('show')
 }
 
-/*funkcja wczytujaca wszystkie dane na strone:  usr , template email */
+/*funkcja wczytujaca wszystkie dane na strone:  usr , template email oraz renderuje leady */
 function load_and_render_page_data() {
-      $("#new-leads").append(' <div class="loader-inner"><img src="ajax-loader.gif" ></div>');
-      leads_divison_and_init_render(window.test.results);
+    $("#my-leeds").append(' <div class="loader-inner"><img src="ajax-loader.gif" ></div>');
 
+    /*podzielenie leadow na nowe i nowe otwarte i wyrenderowanie*/
+    $.when(window.new_leads = $.grep(window.test.results, function (e) {
+        return e.STATUSCODE == "NEW"
+    })).then(function () {
+        render_leeds_in_place(window.new_leads, "new-leads");
+    });
 
+    $.when(window.open_with = $.grep(window.test.results, function (e) {
+        return e.STATUSCODE == "OPEN" && !e.UPRAWNIENIA_PRACA
+
+    })).then(function (x) {
+        render_leeds_in_place(window.open_with, "open-no-attribution");
+    });
 
 
     /*pobieram dane templetek email*/
@@ -344,10 +355,21 @@ function load_and_render_page_data() {
         window.user = data.results[0];
         window.usr_short = window.user.SKROT;
         console.log(window.usr_short);
+
+        /*wyswietlanie moich leadow*/
+
+        $.when(window.my_leeds = $.grep(window.test.results, function (e) {
+            return e.UPRAWNIENIA_PRACA == window.usr_short && e.STATUSCODE == "OPEN"
+        })).then(function (x) {
+            $("#my-leeds").empty();
+            render_leeds_in_place(window.my_leeds, "my-leeds");
+            window.setTimeout(function () {
+                $("#refresh-button").removeClass("glyphicon-refresh-animate");
+            }, 1000);
+        });
+
     }, function () {
     });
-
-    /*pobieram dane leady i wyswietla na ekranie */
 
 
 }
@@ -434,9 +456,9 @@ function contact_accomplish(lead_id) {
 function clear_error() {
     $("#assign-error").empty();
     $('body').scrollTo('#' + window.object.LEADID);
-
-
 }
+
+
 /*przypisanie leadu*/
 function assign_lead() {
     $("#load_assign_gif").css("display", "block");
@@ -474,7 +496,6 @@ function assign_lead() {
 
 
 function time_difference_number(time_given) {
-
     var leed_date = time_given;
     leed_date = leed_date.split(/(?:-| |:)+/);
     var lead_time = new Date(leed_date[0], leed_date[1], leed_date[2],

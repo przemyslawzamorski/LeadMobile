@@ -33,7 +33,7 @@ function change_serwer() {
 }
 
 
-function back_to_login(){
+function back_to_login() {
     $("#serwer_form").css("display", "none");
     $("#login_form").css("display", "block");
 
@@ -52,14 +52,14 @@ function log_in() {
 
     var serwer_url = window.serwer;
     var index = serwer_url.indexOf("/");
-    index = index +1;
+    index = index + 1;
     window.header = serwer_url.substr(0, index);
-    window.rest_url = serwer_url.substr(index+1);
+    window.rest_url = serwer_url.substr(index + 1);
 
-     $.ajax({
+    $.ajax({
         type: 'GET',
         async: true,
-        url: window.header + window.username + ":" + window.password + "@" + window.rest_url + "/rin/mob_leady?resultsPerPage=100" ,
+        url: window.header + window.username + ":" + window.password + "@" + window.rest_url + "/rin/mob_leady?resultsPerPage=100",
         processData: true,
         data: {},
         crossDomain: true,
@@ -82,45 +82,6 @@ function log_in() {
             $("#contact_info_load").remove();
         }
     });
-
-
-   /* $(function () {
-
-        var url = header + window.username + ":" + window.password + "@" + rest_url + "/rin/leady?";
-
-        $.ajax(url,
-            {
-                beforeSend: load_start(),
-                statusCode: {
-                    401: function () {
-                        console.log("nie autoryzowano");
-                        $("#login_error").css("display", "block");
-                        $("#password").val('');
-                        $("#username").val('');
-                        $("#contact_info_load").remove();
-
-
-                    },
-                    200: function () {
-                        console.log("autoryzowano");
-                        $("#login_error").css("display", "none");
-                        $("#leeds-content").load('auth_app.html');
-                        $("#leeds-content").css("display", "block");
-                        $("#login").css('display', "none");
-
-
-                    }
-                },
-                error: function () {
-                    console.log("nie autoryzowano");
-                    $("#login_error").css("display", "block");
-                    $("#password").val('');
-                    $("#username").val('');
-                    $("#contact_info_load").remove();
-
-                }
-            });
-    });*/
 }
 
 function load_start() {
