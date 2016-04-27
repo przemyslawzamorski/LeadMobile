@@ -16,6 +16,15 @@ function log_out() {
                     $("#login").collapse('show');
                     $("#login").css("display", "block");
                     $("#leeds-content").css("display", "none");
+                    $("#password").val('');
+                    $("#username").val('');
+                    window.my_leeds = '';
+                    window.new_leads = '';
+                    window.open_with  = '';
+                    window.user = '';
+                    window.usr_short = '';
+                    window.object = '';
+
                     /* location.reload();*/
                 }
             }
