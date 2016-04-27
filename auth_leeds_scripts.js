@@ -16,7 +16,7 @@ function log_out() {
                     $("#login").collapse('show');
                     $("#login").css("display", "block");
                     $("#leeds-content").css("display", "none");
-                    location.reload();
+                   /* location.reload();*/
                 }
             }
         });
@@ -316,7 +316,11 @@ function mod() {
 
 /*funkcja wczytujaca wszystkie dane na strone:  usr , template email */
 function load_and_render_page_data() {
-    $("#new-leads").append(' <div class="loader-inner"><img src="ajax-loader.gif" ></div>');
+      $("#new-leads").append(' <div class="loader-inner"><img src="ajax-loader.gif" ></div>');
+      leads_divison_and_init_render(window.test.results);
+
+
+
 
     /*pobieram dane templetek email*/
     get_date_type(true, "EML_DEF?rodzaj=L", function (data) {
@@ -326,6 +330,7 @@ function load_and_render_page_data() {
                 var select_id = "template-select-" + i;
                 var selector = '<option  id=' + select_id + '>' + window.email_template[i].NAZWA + '</option>';
                 $("#email-content-select").append(selector);
+                console.log("templetki");
             }
         }
         , function () {
@@ -333,18 +338,17 @@ function load_and_render_page_data() {
         });
 
     /*pobieram dane usera*/
-    get_date_type(false, "usr_ja", function (data) {
+    get_date_type(true, "usr_ja", function (data) {
         /* console.log('usr', data);*/
         window.footer = data.results[0].STOPKA_MAIL;
         window.user = data.results[0];
         window.usr_short = window.user.SKROT;
-        /* console.log(window.usr_short);*/
+        console.log(window.usr_short);
     }, function () {
-        /*console.log("nie mozna zaladowac daych usera");*/
     });
 
     /*pobieram dane leady i wyswietla na ekranie */
-    reload_table_leads("mob_leady?resultsPerPage=100");
+
 
 }
 
