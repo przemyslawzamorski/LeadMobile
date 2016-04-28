@@ -101,7 +101,7 @@ function render_leeds_in_place(data, destination) {
             }
 
             /*dodawanie id leada oraz nazwy od kogo  */
-            $("#" + data[i].LEADID).append("<td class='col40 brake-lines' >" + data[i].LEADID + "</br>" + data[i].FIRSTNAME + "</br>" + data[i].LASTNAME + "</td>");
+            $("#" + data[i].LEADID).append("<td class='col40 brake-lines' >" + data[i].LEADID + "</br>" + data[i].FIRSTNAME + " " + data[i].LASTNAME + "</td>");
 
             /*dodawanie kolejnego kroku oraz czasu ktory pozostał*/
             if (data[i].CONTACTDATE && data[i].OPENDATE) {
