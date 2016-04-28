@@ -170,7 +170,7 @@ button {
 }
 
 .brake-lines {
-    word-break: break-all;
+    word-break: break-all !important;
 }
 
 .no-side-padding {
