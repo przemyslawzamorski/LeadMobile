@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="login_styles.css">
+    <script type='application/javascript' src='fastclick.js'></script>
     <script src="login.js"></script>
     <script src="jquery-2.2.0.js"></script>
     <script src="bootstrap.js"></script>
@@ -85,6 +86,9 @@
 <script language="javascript">
 
     $(document).ready(function () {
+        $(function () {
+            FastClick.attach(document.body);
+        });
         check_server();
     });
 </script>

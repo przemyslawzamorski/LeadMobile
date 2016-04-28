@@ -63,7 +63,7 @@ function leads_divison_and_init_render(leads) {
 
 /*renderuje leady w okreslonym miejscu*/
 function render_leeds_in_place(data, destination) {
-    
+
     /*czyszczenie i dodawania zawarotsci leedow*/
     $("#" + destination).empty();
     if (data.length == 0) {
