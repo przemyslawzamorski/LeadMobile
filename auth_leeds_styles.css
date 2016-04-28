@@ -166,7 +166,11 @@ button {
 }
 
 .main-information-column {
-    width: calc(40vw - 32px) !important;
+    width: 40vw  !important;
+}
+
+.main-information-column {
+    width: 40vw  !important;
 }
 
 .brake-lines {
@@ -206,11 +210,11 @@ button {
 }
 
 .col40 {
-    width: calc(40vw - 32px) !important;
+    width: 40% !important; ;
 }
 
 .col30 {
-    width: calc(40vw - 32px) !important;
+    width: 30% !important; ;
 }
 
 .col32px {

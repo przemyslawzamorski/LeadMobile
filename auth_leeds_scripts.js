@@ -101,7 +101,7 @@ function render_leeds_in_place(data, destination) {
             }
 
             /*dodawanie id leada oraz nazwy od kogo  */
-            $("#" + data[i].LEADID).append("<td class='main-information-column brake-lines' >" + data[i].LEADID + "</br>" + data[i].FIRSTNAME + " " + data[i].LASTNAME + "</td>");
+            $("#" + data[i].LEADID).append("<td class='col40 brake-lines' >" + data[i].LEADID + "</br>" + data[i].FIRSTNAME + "</br>" + data[i].LASTNAME + "</td>");
 
             /*dodawanie kolejnego kroku oraz czasu ktory pozostał*/
             if (data[i].CONTACTDATE && data[i].OPENDATE) {
@@ -122,13 +122,13 @@ function render_leeds_in_place(data, destination) {
 
 function render_date(object_data, date, status) {
 
-    $("#" + object_data.LEADID).append("<td class='main-information-column' >" + status + "</td>");
+    $("#" + object_data.LEADID).append("<td class='col30' >" + status + "</td>");
     var time = time_difference(date);
 
     if (time_difference_number(date) >= 0) {
-        $("#" + object_data.LEADID).append("<td class='main-information-column'>" + time + "</td>");
+        $("#" + object_data.LEADID).append("<td class='col30'>" + time + "</td>");
     } else {
-        $("#" + object_data.LEADID).append("<td class='warning no-side-padding main-information-column' >" + time.replace("-", "") + " przekroczono</td>");
+        $("#" + object_data.LEADID).append("<td class='warning no-side-padding col30' >" + time.replace("-", "") + " przekroczono</td>");
     }
 }
 
