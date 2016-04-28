@@ -13,8 +13,9 @@ function log_out() {
                 401: function () {
                     $("#username,#password,#modal-title,#modal-content,#main-content ").empty();
                     $("#password").empty();
-                    $("#login").collapse('show');
                     $("#login").css("display", "block");
+                    $("#login").css("height", "100vh");
+                    $("#login").css("width", "100vw");
                     $("#leeds-content").css("display", "none");
                     $("#password").val('');
                     $("#username").val('');
@@ -24,8 +25,7 @@ function log_out() {
                     window.user = '';
                     window.usr_short = '';
                     window.object = '';
-
-                    /* location.reload();*/
+                    location.reload();
                 }
             }
         });
