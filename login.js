@@ -55,15 +55,13 @@ function log_in() {
     index = index + 1;
     window.header = serwer_url.substr(0, index);
     window.rest_url = serwer_url.substr(index + 1);
-
     $.ajax({
         type: 'GET',
         async: true,
+        crossOrigin: true,
         url: window.header + window.username + ":" + window.password + "@" + window.rest_url + "/rin/mob_leady?resultsPerPage=100",
-        processData: true,
         data: {},
-        crossDomain: true,
-        dataType: "json",
+
         beforeSend: load_start(),
         success: function (data) {
             window.test = data;
@@ -74,8 +72,11 @@ function log_in() {
             $("#login").css('display', "none");
             $("#contact_info_load").remove();
         },
-        error: function (data) {
+        error: function (xhr,err) {
             console.log("nie autoryzowano");
+
+          $("#login_error").append("readyState: "+xhr.readyState+"\nstatus: "+xhr.status);
+            $("#login_error").append("responseText: "+xhr.responseText);
             $("#login_error").css("display", "block");
             $("#password").val('');
             $("#username").val('');

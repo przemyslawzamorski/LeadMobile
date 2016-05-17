@@ -23,12 +23,13 @@
     -->
     <preference name="permissions"                value="none"/>
 
+    <feature name="http://api.phonegap.com/1.0/network"/>
     <!-- Customize your app and platform with the preference element. -->
     <preference name="orientation"                value="default" />        <!-- all: default means both landscape and portrait are enabled -->
     <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
     <preference name="fullscreen"                 value="true" />           <!-- all: hides the status bar at the top of the screen -->
     <preference name="webviewbounce"              value="true" />           <!-- ios: control whether the screen 'bounces' when scrolled beyond the top -->
-    <preference name="prerendered-icon"           value="true" />           <!-- ios: if icon is prerendered, iOS will not apply it's gloss to the app's icon on the user's home screen -->
+    <preference name="prerendered-icon"           value="true" />           <!-- ios: if icon is prerendered, iOS will not apply it's gloss to the app's icon on the 's home screen -->
     <preference name="stay-in-webview"            value="false" />          <!-- ios: external links should open in the default browser, 'true' would use the webview the app lives in -->
     <preference name="ios-statusbarstyle"         value="black-opaque" />   <!-- ios: black-translucent will appear black because the PhoneGap webview doesn't go beneath the status bar -->
     <preference name="detect-data-types"          value="true" />           <!-- ios: controls whether data types (such as phone no. and dates) are automatically turned into links by the system -->
@@ -41,29 +42,29 @@
         Define a specific version of PhoneGap to build into your app.
         <preference name="phonegap-version"       value="3.5.0" />
     -->
-    <preference name='phonegap-version' value='cli-5.1.1' />
+    <preference name='phonegap-version' value='cli-6.0.0' />
 
     <!-- Plugins -->
 
     <!-- Core plugins -->
-    <!--<gap:plugin name="org.apache.cordova.battery-status" />-->
-    <!--&lt;!&ndash;<gap:plugin name="org.apache.cordova.camera" />&ndash;&gt;-->
-    <!--&lt;!&ndash;<gap:plugin name="org.apache.cordova.media-capture" />&ndash;&gt;-->
-    <!--<gap:plugin name="org.apache.cordova.console" />-->
-    <!--<gap:plugin name="org.apache.cordova.contacts" />-->
-    <!--<gap:plugin name="org.apache.cordova.device" />-->
-    <!--<gap:plugin name="org.apache.cordova.device-motion" />-->
-    <!--&lt;!&ndash;<gap:plugin name="org.apache.cordova.device-orientation" />&ndash;&gt;-->
-    <!--<gap:plugin name="org.apache.cordova.dialogs" />-->
-    <!--<gap:plugin name="org.apache.cordova.file" />-->
-    <!--<gap:plugin name="org.apache.cordova.file-transfer" />-->
-    <!--<gap:plugin name="org.apache.cordova.geolocation" />-->
-    <!--<gap:plugin name="org.apache.cordova.globalization" />-->
-    <!--<gap:plugin name="org.apache.cordova.inappbrowser" />-->
-    <!--<gap:plugin name="org.apache.cordova.media" />-->
+    <gap:plugin name="org.apache.cordova.battery-status" />
+    <gap:plugin name="org.apache.cordova.camera" />
+    <gap:plugin name="org.apache.cordova.media-capture" />
+    <gap:plugin name="org.apache.cordova.console" />
+    <gap:plugin name="org.apache.cordova.contacts" />
+    <gap:plugin name="org.apache.cordova.device" />
+    <gap:plugin name="org.apache.cordova.device-motion" />
+    <gap:plugin name="org.apache.cordova.device-orientation" />
+    <gap:plugin name="org.apache.cordova.dialogs" />
+    <gap:plugin name="org.apache.cordova.file" />
+    <gap:plugin name="org.apache.cordova.file-transfer" />
+    <gap:plugin name="org.apache.cordova.geolocation" />
+    <gap:plugin name="org.apache.cordova.globalization" />
+    <gap:plugin name="org.apache.cordova.inappbrowser" />
+    <gap:plugin name="org.apache.cordova.media" />
     <gap:plugin name="org.apache.cordova.network-information" />
-    <!--<gap:plugin name="org.apache.cordova.splashscreen" />-->
-    <!--<gap:plugin name="org.apache.cordova.vibration" />-->
+    <gap:plugin name="org.apache.cordova.splashscreen" />
+    <gap:plugin name="org.apache.cordova.vibration" />
 
   
 
@@ -103,10 +104,11 @@
     <plugin name="cordova-plugin-whitelist" version="1" />
 
 
-    <access origin="http://*" />
-    <access origin="https://*" />
+   <access origin="*" />
 
-
+    <allow-navigation href="http://*/*" />
+    <allow-navigation href="https://*/*" />
+    <allow-navigation href="data:*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
